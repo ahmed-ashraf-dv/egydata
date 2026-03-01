@@ -1,40 +1,6 @@
 'use strict';
 
-const areaCodes = [
-  // Mobile Networks
-  { code: '010', region: 'ڤودافون', regionEn: 'Vodafone' },
-  { code: '011', region: 'اتصالات', regionEn: 'Etisalat' },
-  { code: '012', region: 'أورنج', regionEn: 'Orange' },
-  { code: '015', region: 'وي / العاشر من رمضان', regionEn: 'WE / 10th of Ramadan' },
-
-  // Landlines
-  { code: '02', region: 'القاهرة والجيزة', regionEn: 'Cairo & Giza' },
-  { code: '03', region: 'الإسكندرية', regionEn: 'Alexandria' },
-  { code: '013', region: 'القليوبية (بنها)', regionEn: 'Qalyubia (Benha)' },
-  { code: '040', region: 'الغربية (طنطا)', regionEn: 'Gharbia (Tanta)' },
-  { code: '045', region: 'البحيرة (دمنهور)', regionEn: 'Beheira (Damanhour)' },
-  { code: '046', region: 'مطروح', regionEn: 'Matruh' },
-  { code: '047', region: 'كفر الشيخ', regionEn: 'Kafr El Sheikh' },
-  { code: '048', region: 'المنوفية (شبين الكوم)', regionEn: 'Monufia (Shebin El Kom)' },
-  { code: '050', region: 'الدقهلية (المنصورة)', regionEn: 'Dakahlia (Mansoura)' },
-  { code: '055', region: 'الشرقية (الزقازيق)', regionEn: 'Sharqia (Zagazig)' },
-  { code: '057', region: 'دمياط', regionEn: 'Damietta' },
-  { code: '062', region: 'السويس', regionEn: 'Suez' },
-  { code: '064', region: 'الإسماعيلية', regionEn: 'Ismailia' },
-  { code: '065', region: 'البحر الأحمر (الغردقة)', regionEn: 'Red Sea (Hurghada)' },
-  { code: '066', region: 'بورسعيد', regionEn: 'Port Said' },
-  { code: '068', region: 'شمال سيناء (العريش)', regionEn: 'North Sinai (Arish)' },
-  { code: '069', region: 'جنوب سيناء', regionEn: 'South Sinai' },
-  { code: '082', region: 'بني سويف', regionEn: 'Beni Suef' },
-  { code: '084', region: 'الفيوم', regionEn: 'Faiyum' },
-  { code: '086', region: 'المنيا', regionEn: 'Minya' },
-  { code: '088', region: 'أسيوط', regionEn: 'Asyut' },
-  { code: '092', region: 'الوادي الجديد', regionEn: 'New Valley' },
-  { code: '093', region: 'سوهاج', regionEn: 'Sohag' },
-  { code: '095', region: 'الأقصر', regionEn: 'Luxor' },
-  { code: '096', region: 'قنا', regionEn: 'Qena' },
-  { code: '097', region: 'أسوان', regionEn: 'Aswan' },
-];
+const areaCodes = require('./data/phoneArea.json');
 
 const codeMap = new Map(areaCodes.map((a) => [a.code, a]));
 

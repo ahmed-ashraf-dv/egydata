@@ -106,32 +106,32 @@ console.log(timezone.isDST()); // true or false depending on current date (Egypt
 
 ### `governorates`
 
-| Method            | Parameters | Returns              | Description                                                  |
-| ----------------- | ---------- | -------------------- | ------------------------------------------------------------ | --------------------------------------------- | ------------------------------------ |
-| `getAll()`        | —          | `Array<Governorate>` | Returns all 27 Egyptian governorates                         |
-| `getByCode(code)` | `string`   | `Governorate         | undefined`                                                   | Find a governorate by its code (e.g. `'CAI'`) |
-| `getById(id)`     | `number    | string`              | `Governorate                                                 | undefined`                                    | Find a governorate by its numeric id |
-| `search(query)`   | `string`   | `Array<Governorate>` | Search by Arabic or English name (partial, case-insensitive) |
+| Method            | Parameters         | Returns                          | Description                                                  |
+| ----------------- | ------------------ | -------------------------------- | ------------------------------------------------------------ |
+| `getAll()`        | —                  | `Array<Governorate>`             | Returns all 27 Egyptian governorates                         |
+| `getByCode(code)` | `string`           | `Governorate \| undefined`       | Find a governorate by its code (e.g. `'CAI'`)                |
+| `getById(id)`     | `number \| string` | `Governorate \| undefined`       | Find a governorate by its numeric id                         |
+| `search(query)`   | `string`           | `Array<Governorate>`             | Search by Arabic or English name (partial, case-insensitive) |
 
 **Governorate shape:** `{ id: number, code: string, name: string, nameEn: string }`
 
 ### `cities`
 
-| Method                      | Parameters | Returns       | Description                                                  |
-| --------------------------- | ---------- | ------------- | ------------------------------------------------------------ | ---------- | ----------------------------- |
-| `getByGovernorate(govCode)` | `string`   | `Array<City>` | Get all cities in a governorate                              |
-| `getById(id)`               | `number    | string`       | `City                                                        | undefined` | Find a city by its numeric id |
-| `search(query)`             | `string`   | `Array<City>` | Search by Arabic or English name (partial, case-insensitive) |
+| Method                      | Parameters         | Returns                 | Description                                                  |
+| --------------------------- | ------------------ | ----------------------- | ------------------------------------------------------------ |
+| `getByGovernorate(govCode)` | `string`           | `Array<City>`           | Get all cities in a governorate                              |
+| `getById(id)`               | `number \| string` | `City \| undefined`     | Find a city by its numeric id                                |
+| `search(query)`             | `string`           | `Array<City>`           | Search by Arabic or English name (partial, case-insensitive) |
 
 **City shape:** `{ id: number, name: string, nameEn: string, governorateCode: string }`
 
 ### `phoneArea`
 
-| Method                | Parameters | Returns           | Description                                         |
-| --------------------- | ---------- | ----------------- | --------------------------------------------------- | ------------------------------------------------------- |
-| `getAll()`            | —          | `Array<AreaCode>` | Returns all Egyptian landline and mobile area codes |
-| `getRegion(code)`     | `string`   | `AreaCode         | undefined`                                          | Look up region info by area code                        |
-| `getCode(regionName)` | `string`   | `AreaCode         | undefined`                                          | Find area code entry by region name (Arabic or English) |
+| Method                | Parameters | Returns                    | Description                                             |
+| --------------------- | ---------- | -------------------------- | ------------------------------------------------------- |
+| `getAll()`            | —          | `Array<AreaCode>`          | Returns all Egyptian landline and mobile area codes     |
+| `getRegion(code)`     | `string`   | `AreaCode \| undefined`    | Look up region info by area code                        |
+| `getCode(regionName)` | `string`   | `AreaCode \| undefined`    | Find area code entry by region name (Arabic or English) |
 
 **AreaCode shape:** `{ code: string, region: string, regionEn: string }`
 
@@ -147,7 +147,7 @@ console.log(timezone.isDST()); // true or false depending on current date (Egypt
 ## Data Coverage
 
 - **27** governorates with Arabic and English names
-- **151** cities and districts across all governorates
+- **389** cities and districts across all governorates
 - **30** landline and mobile area codes
 - Full timezone support for `Africa/Cairo`
 
