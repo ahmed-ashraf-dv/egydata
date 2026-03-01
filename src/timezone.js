@@ -1,7 +1,6 @@
 'use strict';
 
 const name = 'Africa/Cairo';
-const offset = '+02:00';
 
 function now() {
   const formatter = new Intl.DateTimeFormat('en-US', {
@@ -52,4 +51,11 @@ function isDST(date = new Date()) {
   return offsetMinutes === 180;
 }
 
-module.exports = { name, offset, now, isDST };
+module.exports = {
+  name,
+  get offset() {
+    return isDST() ? '+03:00' : '+02:00';
+  },
+  now,
+  isDST
+};
