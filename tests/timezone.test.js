@@ -6,8 +6,9 @@ describe('timezone', () => {
       expect(timezone.name).toBe('Africa/Cairo');
     });
 
-    it('should have offset "+02:00"', () => {
-      expect(timezone.offset).toBe('+02:00');
+    it('should have offset dynamically based on DST', () => {
+      const expectedOffset = timezone.isDST() ? '+03:00' : '+02:00';
+      expect(timezone.offset).toBe(expectedOffset);
     });
   });
 
@@ -26,9 +27,9 @@ describe('timezone', () => {
       const result = timezone.now();
       const nowUtc = Date.now();
       const diff = Math.abs(result.getTime() - nowUtc);
-      // Egypt is UTC+2, so the date shifted to UTC representation
-      // will differ by roughly 2 hours from real UTC
-      expect(diff).toBeLessThan(3 * 60 * 60 * 1000);
+      // Egypt is UTC+2 or UTC+3, so the date shifted to UTC representation
+      // will differ by roughly 2-3 hours from real UTC
+      expect(diff).toBeLessThan(4 * 60 * 60 * 1000);
     });
   });
 
