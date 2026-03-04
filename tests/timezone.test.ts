@@ -1,4 +1,4 @@
-const { timezone } = require('../src/index');
+import { timezone } from '../src/index';
 
 describe('timezone', () => {
   describe('properties', () => {

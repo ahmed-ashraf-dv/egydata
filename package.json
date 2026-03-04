@@ -2,16 +2,20 @@
   "name": "egydata",
   "version": "1.1.0",
   "description": "Structured Egyptian geographical and timezone data — governorates, cities, phone area codes, and timezone utilities.",
-  "main": "./src/index.js",
+  "main": "./dist/index.js",
   "module": "./index.mjs",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./index.mjs",
-      "require": "./src/index.js"
+      "require": "./dist/index.js"
     }
   },
   "scripts": {
-    "test": "jest --coverage"
+    "build": "tsc",
+    "test": "jest --coverage",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "egypt",
@@ -39,12 +43,16 @@
   },
   "homepage": "https://github.com/ahmed-ashraf-dv/egydata#readme",
   "files": [
-    "src/",
+    "dist/",
     "index.mjs",
     "LICENSE",
     "README.md"
   ],
   "devDependencies": {
-    "jest": "^29.7.0"
+    "@types/jest": "^30.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }

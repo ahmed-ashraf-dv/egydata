@@ -1,4 +1,4 @@
-const { governorates } = require('../src/index');
+import { governorates } from '../src/index';
 
 describe('governorates', () => {
   describe('getAll()', () => {
@@ -41,14 +41,14 @@ describe('governorates', () => {
     it('should return Cairo for code "CAI"', () => {
       const gov = governorates.getByCode('CAI');
       expect(gov).toBeDefined();
-      expect(gov.nameEn).toBe('Cairo');
-      expect(gov.name).toBe('القاهرة');
+      expect(gov!.nameEn).toBe('Cairo');
+      expect(gov!.name).toBe('القاهرة');
     });
 
     it('should be case-insensitive', () => {
       const gov = governorates.getByCode('cai');
       expect(gov).toBeDefined();
-      expect(gov.nameEn).toBe('Cairo');
+      expect(gov!.nameEn).toBe('Cairo');
     });
 
     it('should return undefined for invalid code', () => {
@@ -56,8 +56,8 @@ describe('governorates', () => {
     });
 
     it('should return undefined for non-string input', () => {
-      expect(governorates.getByCode(123)).toBeUndefined();
-      expect(governorates.getByCode(null)).toBeUndefined();
+      expect(governorates.getByCode(123 as unknown as string)).toBeUndefined();
+      expect(governorates.getByCode(null as unknown as string)).toBeUndefined();
     });
   });
 
@@ -65,13 +65,13 @@ describe('governorates', () => {
     it('should return Cairo for id 1', () => {
       const gov = governorates.getById(1);
       expect(gov).toBeDefined();
-      expect(gov.code).toBe('CAI');
+      expect(gov!.code).toBe('CAI');
     });
 
     it('should accept string numbers', () => {
       const gov = governorates.getById('1');
       expect(gov).toBeDefined();
-      expect(gov.code).toBe('CAI');
+      expect(gov!.code).toBe('CAI');
     });
 
     it('should return undefined for non-existent id', () => {
@@ -118,8 +118,8 @@ describe('governorates', () => {
     });
 
     it('should return empty array for non-string input', () => {
-      expect(governorates.search(123)).toEqual([]);
-      expect(governorates.search(null)).toEqual([]);
+      expect(governorates.search(123 as unknown as string)).toEqual([]);
+      expect(governorates.search(null as unknown as string)).toEqual([]);
     });
   });
 });

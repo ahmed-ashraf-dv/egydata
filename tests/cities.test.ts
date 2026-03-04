@@ -1,4 +1,4 @@
-const { cities } = require('../src/index');
+import { cities } from '../src/index';
 
 describe('cities', () => {
   describe('getByGovernorate()', () => {
@@ -27,7 +27,7 @@ describe('cities', () => {
     });
 
     it('should return empty array for non-string input', () => {
-      expect(cities.getByGovernorate(123)).toEqual([]);
+      expect(cities.getByGovernorate(123 as unknown as string)).toEqual([]);
     });
 
     it('every city should have required fields', () => {
@@ -57,14 +57,14 @@ describe('cities', () => {
     it('should return a city by id', () => {
       const city = cities.getById(1);
       expect(city).toBeDefined();
-      expect(city.id).toBe(1);
-      expect(city.governorateCode).toBe('CAI');
+      expect(city!.id).toBe(1);
+      expect(city!.governorateCode).toBe('CAI');
     });
 
     it('should accept string numbers', () => {
       const city = cities.getById('1');
       expect(city).toBeDefined();
-      expect(city.id).toBe(1);
+      expect(city!.id).toBe(1);
     });
 
     it('should return undefined for non-existent id', () => {
@@ -73,7 +73,7 @@ describe('cities', () => {
 
     it('should return undefined for invalid input', () => {
       expect(cities.getById('abc')).toBeUndefined();
-      expect(cities.getById(null)).toBeUndefined();
+      expect(cities.getById(null as unknown as number)).toBeUndefined();
     });
   });
 
@@ -106,7 +106,7 @@ describe('cities', () => {
     it('should return empty array for empty or invalid input', () => {
       expect(cities.search('')).toEqual([]);
       expect(cities.search('  ')).toEqual([]);
-      expect(cities.search(null)).toEqual([]);
+      expect(cities.search(null as unknown as string)).toEqual([]);
     });
   });
 });

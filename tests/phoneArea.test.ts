@@ -1,4 +1,4 @@
-const { phoneArea } = require('../src/index');
+import { phoneArea } from '../src/index';
 
 describe('phoneArea', () => {
   describe('getAll()', () => {
@@ -40,13 +40,13 @@ describe('phoneArea', () => {
     it('should return Cairo & Giza for code "02"', () => {
       const result = phoneArea.getRegion('02');
       expect(result).toBeDefined();
-      expect(result.regionEn).toBe('Cairo & Giza');
+      expect(result!.regionEn).toBe('Cairo & Giza');
     });
 
     it('should return Alexandria for code "03"', () => {
       const result = phoneArea.getRegion('03');
       expect(result).toBeDefined();
-      expect(result.regionEn).toBe('Alexandria');
+      expect(result!.regionEn).toBe('Alexandria');
     });
 
     it('should return undefined for invalid code', () => {
@@ -54,8 +54,8 @@ describe('phoneArea', () => {
     });
 
     it('should return undefined for non-string input', () => {
-      expect(phoneArea.getRegion(2)).toBeUndefined();
-      expect(phoneArea.getRegion(null)).toBeUndefined();
+      expect(phoneArea.getRegion(2 as unknown as string)).toBeUndefined();
+      expect(phoneArea.getRegion(null as unknown as string)).toBeUndefined();
     });
   });
 
@@ -63,19 +63,19 @@ describe('phoneArea', () => {
     it('should find area code by English region name', () => {
       const result = phoneArea.getCode('Alexandria');
       expect(result).toBeDefined();
-      expect(result.code).toBe('03');
+      expect(result!.code).toBe('03');
     });
 
     it('should find area code by Arabic region name', () => {
       const result = phoneArea.getCode('الإسكندرية');
       expect(result).toBeDefined();
-      expect(result.code).toBe('03');
+      expect(result!.code).toBe('03');
     });
 
     it('should find by partial name', () => {
       const result = phoneArea.getCode('Mansoura');
       expect(result).toBeDefined();
-      expect(result.code).toBe('050');
+      expect(result!.code).toBe('050');
     });
 
     it('should return undefined for no match', () => {
@@ -85,7 +85,7 @@ describe('phoneArea', () => {
     it('should return undefined for empty or invalid input', () => {
       expect(phoneArea.getCode('')).toBeUndefined();
       expect(phoneArea.getCode('  ')).toBeUndefined();
-      expect(phoneArea.getCode(null)).toBeUndefined();
+      expect(phoneArea.getCode(null as unknown as string)).toBeUndefined();
     });
   });
 });
