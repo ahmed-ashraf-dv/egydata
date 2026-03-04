@@ -1,6 +1,6 @@
 {
   "name": "egydata",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Structured Egyptian geographical and timezone data — governorates, cities, phone area codes, and timezone utilities.",
   "main": "./dist/index.js",
   "module": "./index.mjs",
